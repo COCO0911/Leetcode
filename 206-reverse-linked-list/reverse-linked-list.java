@@ -16,6 +16,7 @@ class Solution {
         ListNode cur = head;
 
         while(cur != null){
+            //this nxt is node 3 when it break
             ListNode nxt = cur.next;
             cur.next = prev;
             prev = cur;
