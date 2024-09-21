@@ -19,9 +19,9 @@ class Solution {
         }
         
         //reverse the second part of the list
-        ListNode prev = null, curr = slow, tmp;
+        ListNode prev = null, curr = slow;
         while (curr != null) {
-            tmp = curr.next;
+            ListNode tmp = curr.next;
             curr.next = prev;
             prev = curr;
             curr = tmp;
@@ -29,7 +29,7 @@ class Solution {
         
         ListNode first = head, second = prev;
         while (second.next != null) {
-            tmp = first.next;
+            ListNode tmp = first.next;
             first.next = second;
             first = tmp;
             
