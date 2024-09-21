@@ -21,9 +21,13 @@ class Solution {
         //reverse the second part of the list
         ListNode prev = null, curr = slow;
         while (curr != null) {
+            //record tmp 在cur的下一个
             ListNode tmp = curr.next;
+            //指向下一个
             curr.next = prev;
+            //shift prev to curr
             prev = curr;
+            //shift cur to recorded place
             curr = tmp;
         }
         
