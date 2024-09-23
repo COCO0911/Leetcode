@@ -14,7 +14,7 @@ class Solution {
 
         PriorityQueue<Integer> minHeap = new PriorityQueue<>((a, b) -> (a - b));
 
-        //add list into minheap
+        //把所有listNode加进去minheap里面
         for (ListNode cur : lists){
             while (cur != null) {
                 minHeap.add(cur.val);
@@ -25,6 +25,7 @@ class Solution {
         ListNode dummy = new ListNode();
         ListNode head = dummy;
 
+        //每次minHeap出来的都是heap里面最小的
         while(!minHeap.isEmpty()){
             head.next = new ListNode(minHeap.remove());
             head = head.next;
