@@ -16,8 +16,24 @@
 class Solution {
     public int maxDepth(TreeNode root) {
         if (root == null) return 0;
-        int left = maxDepth(root.left);
-        int right = maxDepth(root.right);
-        return Math.max(left, right) + 1;
+        ArrayDeque<TreeNode> queue = new ArrayDeque<>();
+        
+        int depth = 0, next = 0;
+ 
+       
+        queue.offer(root);
+
+        while (!queue.isEmpty()){
+            depth++;
+            next = queue.size();
+            TreeNode cur;
+            for (int i = 0; i < next; i++){
+                cur = queue.poll();
+                if (cur.left != null) queue.offer(cur.left);
+                if (cur.right != null) queue.offer(cur.right);
+            }
+        }
+
+        return depth;
     }
 }
