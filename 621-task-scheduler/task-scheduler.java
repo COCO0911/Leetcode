@@ -5,17 +5,32 @@ class Solution {
             frequencies[i - 'A']++; 
         }
         
-        Arrays.sort(frequencies);
-        int maxCount = frequencies[25]-1;
-        int idleTime = n * (maxCount);
-        for(int i = 24; i >= 0; i--){
-            idleTime -= Math.min(maxCount, frequencies[i]);
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());        //start with most frequent letters
+
+       
+        for(int i = 0; i < 26; i++){
+            if (frequencies[i] > 0) {
+                pq.offer(frequencies[i]);
+            }        
         }
 
-        if(idleTime > 0){
-            return idleTime + tasks.length;
-        }else{
-            return tasks.length;
+        int time = 0;
+        while (!pq.isEmpty()) {
+            int cycle = n + 1;
+            List<Integer> store = new ArrayList<>();
+            int taskCount = 0;
+            while( cycle-- > 0 && !pq.isEmpty()){
+                int curFreq = pq.poll();
+                if (curFreq > 1){
+                    store.add(curFreq - 1);
+                }
+                taskCount++;
+            }
+            store.forEach(pq::offer);
+            // Add time for the completed cycle
+            time += (pq.isEmpty() ? taskCount : n + 1);
         }
+
+        return time;
     }
 }
