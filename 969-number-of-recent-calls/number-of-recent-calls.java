@@ -1,7 +1,7 @@
 class RecentCounter {
     ArrayDeque<Integer> q;
     public RecentCounter() {
-        this.q = q;
+        // this.q = q;
         q = new ArrayDeque<>();
     }
     
