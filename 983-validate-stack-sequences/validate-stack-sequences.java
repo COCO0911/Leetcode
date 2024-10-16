@@ -6,13 +6,10 @@ class Solution {
         for (int i : pushed){
             s.push(i);
         
-            while(!s.isEmpty()&& j < n){
-                if (s.peek() == popped[j]){
-                    s.pop();
-                    j++;
-                }else{
-                    break;
-                }
+            while(!s.isEmpty()&& j < n && s.peek() == popped[j]){
+                
+                 s.pop();
+                j++;
             }
         }
         return j == n;
