@@ -1,9 +1,11 @@
 class Solution {
-    int[][] direction = {{-1, 0},{1, 0},{0, 1},{0, -1}};
+    int[][] direction = new int[][]{{-1, 0},{1, 0},{0, 1},{0, -1}};
+    
     class State{
         int row;
-        int col;
+        int col; 
         int distance;
+
         State(int row, int col, int distance){
             this.row = row;
             this.col = col;
@@ -34,6 +36,7 @@ class Solution {
                 int newCol = state.col + dir[1];
                 
                 if (newRow >= 0 && newRow < row && newCol >= 0 && newCol < col) {
+                    // If we found a shorter path to a '1' cell, update it
                     if (matrix[newRow][newCol] > state.distance + 1) {
                         matrix[newRow][newCol] = state.distance + 1;
                         queue.add(new State(newRow, newCol, matrix[newRow][newCol]));
