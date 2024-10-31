@@ -22,10 +22,8 @@ class Solution {
         while (!q.isEmpty()){
             int cur = q.poll();
             res[count++] = cur;
-            List<Integer> toTake = graph.get(cur);
-            for (int i = 0; toTake != null && i < toTake.size(); i++) {
-                inDegree[toTake.get(i)]--;
-                if (inDegree[toTake.get(i)] == 0) q.add(toTake.get(i));
+            for(int next : graph.getOrDefault(cur, new ArrayList<>())){
+                if(--inDegree[next] == 0) q.offer(next);
             }
         }
        
