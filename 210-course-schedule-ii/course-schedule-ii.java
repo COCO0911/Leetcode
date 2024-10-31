@@ -11,12 +11,13 @@ class Solution {
 
         }
         
-        
+        //找graph入口
         Queue<Integer> q = new ArrayDeque<>();
         for (int i = 0; i < numCourses; i++) {
             if(inDegree[i] == 0) q.offer(i);
         }
         
+        //topological Sort
         int count = 0;
         while (!q.isEmpty()){
             int cur = q.poll();
