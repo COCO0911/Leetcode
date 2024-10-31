@@ -6,8 +6,9 @@ class Solution {
         int[] res = new int[numCourses];
         
         for (int i = 0; i < prerequisites.length; i++) { 
-            inDegree[prerequisites[i][0]]++;
             graph.computeIfAbsent(prerequisites[i][1], k ->  new ArrayList<>()).add(prerequisites[i][0]);
+            inDegree[prerequisites[i][0]]++;
+
         }
         
         
