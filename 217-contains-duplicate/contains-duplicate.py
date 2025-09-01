@@ -5,10 +5,10 @@ class Solution(object):
         :rtype: bool
         """
         hash_set = set()
-        for i in nums: 
-            if i in hash_set:
+        for number in nums: 
+            if number in hash_set:
                 return True
             else:
-                hash_set.add(i)
+                hash_set.add(number)
         return False
         
